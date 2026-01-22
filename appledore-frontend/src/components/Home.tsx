@@ -1,0 +1,157 @@
+import  { useState } from 'react';
+import Shercap from '../icons/Shercap';
+import { useNavigate } from 'react-router-dom';
+
+export const Home = () => {
+  const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
+  const navigate=useNavigate()  
+  const handleSignIn = () => {
+    navigate("signin")
+  };
+
+  const handleSignUp = () => {
+    navigate("signup")
+  };
+
+  const features = [
+    {
+      title: "Curate Your Knowledge",
+      description: "Store and organize links to videos, blog posts, articles, and resources in your personal vault."
+    },
+    {
+      title: "Intelligent Categorization",
+      description: "Tag and categorize your saved content for effortless retrieval when you need it most."
+    },
+    {
+      title: "Access Anywhere",
+      description: "Your collection of insights accessible from any device, synchronized in real-time."
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-white text-black">
+      {/* Navigation */}
+      <nav className="border-b border-black">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          <div className="flex items-center space-x-2">
+            <Shercap/>
+            <span className="text-2xl font-bold tracking-tight">APPLEDORE</span>
+          </div>
+          
+          <div className="flex space-x-4">
+            <button 
+              onClick={handleSignIn}
+              className="px-6 py-2 border-2 border-black hover:bg-black hover:text-white transition-colors duration-200"
+            >
+              Sign In
+            </button>
+            <button 
+              onClick={handleSignUp}
+              className="px-6 py-2 bg-black text-white hover:bg-white hover:text-black border-2 border-black transition-colors duration-200"
+            >
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <div className="max-w-7xl mx-auto px-6 py-20">
+        <div className="text-center mb-16">
+          <h1 className="text-6xl font-bold mb-6 tracking-tight">
+            Your Personal Vault<br />of Knowledge
+          </h1>
+          <p className="text-xl text-gray-700 max-w-2xl mx-auto mb-8">
+            Appledore is your digital repository for the web's most valuable content. 
+            Store, organize, and access your collection of videos, articles, and resources 
+            with the precision of a master detective.
+          </p>
+          <div className="flex justify-center space-x-4">
+            <button 
+              onClick={handleSignUp}
+              className="px-8 py-4 bg-black text-white text-lg hover:bg-gray-800 transition-colors duration-200"
+            >
+              Start Building Your Vault
+            </button>
+            <button className="px-8 py-4 border-2 border-black text-lg hover:bg-black hover:text-white transition-colors duration-200">
+              Learn More
+            </button>
+          </div>
+        </div>
+
+        {/* Decorative Element */}
+        <div className="border-t-4 border-b-4 border-black py-16 my-16">
+          <blockquote className="text-2xl italic text-center max-w-3xl mx-auto">
+            "The warehouse is the brain. Appledore is the hard drive."
+            <footer className="text-base mt-4 not-italic text-gray-600">
+              — Inspired by 221B Baker Street
+            </footer>
+          </blockquote>
+        </div>
+
+        {/* Features Grid */}
+        <div className="grid md:grid-cols-3 gap-8 mb-20">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className={`p-8 border-2 border-black transition-all duration-300 cursor-pointer ${
+                hoveredFeature === index ? 'bg-black text-white' : 'bg-white'
+              }`}
+              onMouseEnter={() => setHoveredFeature(index)}
+              onMouseLeave={() => setHoveredFeature(null)}
+            >
+              <div className="text-4xl font-bold mb-4">0{index + 1}</div>
+              <h3 className="text-2xl font-bold mb-3">{feature.title}</h3>
+              <p className={hoveredFeature === index ? 'text-gray-300' : 'text-gray-700'}>
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* What You Can Store */}
+        <div className="bg-black text-white p-12 mb-20">
+          <h2 className="text-4xl font-bold mb-8 text-center">What You Can Store</h2>
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {[
+              { icon: "▶", label: "Video Tutorials & Lectures" },
+              { icon: "📝", label: "Blog Posts & Articles" },
+              { icon: "📚", label: "Research Papers & Documentation" },
+              { icon: "🔗", label: "Useful Web Resources" },
+              { icon: "🎓", label: "Online Courses & Lessons" },
+              { icon: "💡", label: "Ideas & Inspirations" }
+            ].map((item, index) => (
+              <div key={index} className="flex items-center space-x-4 p-4 border border-white">
+                <span className="text-3xl">{item.icon}</span>
+                <span className="text-lg">{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="text-center border-4 border-black p-16">
+          <h2 className="text-4xl font-bold mb-4">Ready to Begin?</h2>
+          <p className="text-xl text-gray-700 mb-8">
+            Join Appledore and start building your personal archive of knowledge today.
+          </p>
+          <button 
+            onClick={handleSignUp}
+            className="inline-block px-12 py-4 bg-black text-white text-lg hover:bg-gray-800 transition-colors duration-200"
+          >
+            Create Your Vault
+          </button>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="border-t-2 border-black mt-20 py-8">
+        <div className="max-w-7xl mx-auto px-6 text-center text-gray-600">
+          <p>&copy; 2026 Appledore. All rights reserved.</p>
+          <p className="mt-2 text-sm">Every link tells a story. Every collection reveals character.</p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
