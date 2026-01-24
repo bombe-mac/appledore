@@ -73,9 +73,6 @@ export const Home = () => {
             >
               Start Building Your Vault
             </button>
-            <button className="px-8 py-4 border-2 border-black text-lg hover:bg-black hover:text-white transition-colors duration-200">
-              Learn More
-            </button>
           </div>
         </div>
 

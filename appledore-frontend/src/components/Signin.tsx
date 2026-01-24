@@ -31,8 +31,13 @@ export const Signin = () => {
             });
 
             const jwt=response.data.token;
-            localStorage.setItem("token", jwt)
-            navigate("/dashboard");
+            if (response.status === 200 && response.data.token) {
+                localStorage.setItem("token", jwt);
+                navigate("/dashboard");
+            } 
+            else {
+                setError("Sign in failed");
+            };
 
         } catch (err: any) {
             console.log(err)
@@ -47,8 +52,8 @@ export const Signin = () => {
                 <div className="bg-white rounded-lg shadow-lg p-8">
                     {/* Header */}
                     <div className="text-center mb-8">
-                        <h2 className="text-3xl font-bold text-gray-900">Create Account</h2>
-                        <p className="text-gray-600 mt-2">Sign up to get started</p>
+                        <h2 className="text-3xl font-bold text-gray-900">Sign in</h2>
+    
                     </div>
 
                     {/* Form */}
