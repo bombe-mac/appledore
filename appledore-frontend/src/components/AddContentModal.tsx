@@ -11,10 +11,10 @@ type ModalProps = {
   onClose: () => void;
 };
 
-type ContentType = 'tweet' | 'videos' | 'document' | 'blog' | 'link';
+type ContentType = 'X' | 'videos' | 'document' | 'blog' | 'link';
 
 const tagConfig: Record<ContentType, { label: string; color: string; emoji: React.ReactNode }> = {
-  tweet: { label: 'Tweet', color: 'bg-sky-100 text-sky-700 border-sky-300 hover:bg-sky-200', emoji: <X /> },
+  X: { label: 'Tweet', color: 'bg-sky-100 text-sky-700 border-sky-300 hover:bg-sky-200', emoji: <X /> },
   videos: { label: 'Video', color: 'bg-purple-100 text-purple-700 border-purple-300 hover:bg-purple-200', emoji: <Youtube /> },
   document: { label: 'Document', color: 'bg-blue-100 text-blue-700 border-blue-300 hover:bg-blue-200', emoji: <Page /> },
   blog: { label: 'Blog', color: 'bg-emerald-100 text-emerald-700 border-emerald-300 hover:bg-emerald-200', emoji: <Blog /> },
@@ -44,12 +44,11 @@ const AddContentModal = ({ open, onClose }: ModalProps) => {
             {
                 headers: {
                     'token': token,
-                    // or 'Authorization': `Bearer ${token}`
                 }
             }
         );
         
-        onClose(); // Move inside try block if you only want to close on success
+        onClose(); 
     } catch (error) {
         console.log(error);
     } finally {
