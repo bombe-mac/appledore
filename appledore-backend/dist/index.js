@@ -72,7 +72,8 @@ app.post('/api/v1/signin', async (req, res) => {
         if (passwordMatch) {
             const token = jwt.sign({ id: response._id.toString() }, config.JWT_SECRET);
             res.json({
-                token
+                token,
+                username
             });
         }
         else {
@@ -110,7 +111,7 @@ app.get('/api/v1/content', userMiddleware, async (req, res) => {
 app.delete('/api/v1/content', userMiddleware, async (req, res) => {
     const contentId = req.body.contentId;
     //@ts-ignore
-    await contentModel.deleteMany({ contentId, userId: req.userId });
+    await contentModel.deleteMany({ _id: contentId, userId: req.userId });
     res.json({
         message: "Deleted"
     });

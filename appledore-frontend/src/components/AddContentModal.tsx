@@ -59,13 +59,13 @@ const AddContentModal = ({ open, onClose }: ModalProps) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-md border border-gray-200 dark:border-slate-700">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-100">
-          <h2 className="text-2xl font-semibold text-gray-800">Add Content</h2>
+        <div className="flex items-center justify-between p-6 border-b border-gray-100 dark:border-slate-800">
+          <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">Add Content</h2>
           <button
             onClick={onClose}
-            className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors text-xl leading-none"
+            className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 dark:hover:bg-slate-800 dark:text-slate-300 rounded-full transition-colors text-xl leading-none"
           >
             ✕
           </button>
@@ -75,7 +75,7 @@ const AddContentModal = ({ open, onClose }: ModalProps) => {
         <div className="p-6 space-y-5">
           {/* Title Input */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-slate-200 mb-2">
               Title
             </label>
             <input
@@ -83,13 +83,13 @@ const AddContentModal = ({ open, onClose }: ModalProps) => {
               placeholder="Enter a descriptive title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent outline-none transition-all placeholder:text-gray-400"
+              className="w-full px-4 py-3 border border-gray-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-slate-500 bg-white dark:bg-slate-900 text-gray-900 dark:text-slate-100"
             />
           </div>
 
           {/* URL Input */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-slate-200 mb-2">
               Link
             </label>
             <input
@@ -97,13 +97,13 @@ const AddContentModal = ({ open, onClose }: ModalProps) => {
               placeholder="https://example.com"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent outline-none transition-all placeholder:text-gray-400"
+              className="w-full px-4 py-3 border border-gray-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-slate-500 bg-white dark:bg-slate-900 text-gray-900 dark:text-slate-100"
             />
           </div>
 
           {/* Tag Selection */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">
+            <label className="block text-sm font-medium text-gray-700 dark:text-slate-200 mb-3">
               Content Type
             </label>
             <div className="flex flex-wrap gap-2">
@@ -117,7 +117,7 @@ const AddContentModal = ({ open, onClose }: ModalProps) => {
                     className={`flex items-center gap-2 px-4 py-2 rounded-lg border-2 font-medium text-sm transition-all ${
                       isSelected
                         ? config.color.replace('hover:bg-', 'bg-').replace(/bg-\w+-100/, (m) => m.replace('100', '200'))
-                        : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                        : 'bg-white dark:bg-slate-900 text-gray-600 dark:text-slate-200 border-gray-200 dark:border-slate-700 hover:border-gray-300 dark:hover:border-slate-500 hover:bg-gray-50 dark:hover:bg-slate-800'
                     }`}
                   >
                     <span className="text-base">{config.emoji}</span>
@@ -130,17 +130,17 @@ const AddContentModal = ({ open, onClose }: ModalProps) => {
         </div>
 
         {/* Footer */}
-        <div className="flex gap-3 p-6 bg-gray-50 rounded-b-2xl border-t border-gray-100">
+        <div className="flex gap-3 p-6 bg-gray-50 dark:bg-slate-900 rounded-b-2xl border-t border-gray-100 dark:border-slate-800">
           <button
             onClick={onClose}
-            className="flex-1 px-4 py-3 text-gray-700 font-medium rounded-lg border-2 border-gray-200 hover:bg-gray-100 transition-colors"
+            className="flex-1 px-4 py-3 text-gray-700 dark:text-slate-200 font-medium rounded-lg border-2 border-gray-200 dark:border-slate-700 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors"
           >
             Cancel
           </button>
           <button
             onClick={handleSubmit}
             disabled={loading}
-            className="flex-1 px-4 py-3 bg-black text-white font-medium rounded-lg hover:bg-gray-700 transition-colors shadow-sm hover:shadow-md"
+            className="flex-1 px-4 py-3 bg-black text-white font-medium rounded-lg hover:bg-gray-700 transition-colors shadow-sm hover:shadow-md dark:bg-slate-800 dark:hover:bg-slate-700"
           >
             Add Content
           </button>

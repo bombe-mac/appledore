@@ -6,7 +6,7 @@ const userSchema = new Schema({
 const contentSchema = new Schema({
     title: { type: String, required: true },
     link: { type: String, required: true },
-    type: { type: String, enum: ['tweet', 'videos', 'document', 'blog', 'link'], required: true },
+    type: { type: String, enum: ['X', 'videos', 'document', 'blog', 'link'], required: true },
     userId: { type: Types.ObjectId, ref: 'user', required: true },
     tags: [{ type: Types.ObjectId, ref: 'tag' }],
 });

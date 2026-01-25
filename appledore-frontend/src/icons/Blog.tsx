@@ -1,6 +1,6 @@
 export const Blog = () => {
   return (
-    <svg fill="#000000" className="size-4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 46 46">
+    <svg className="size-4 fill-black dark:fill-gray-400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 46 46">
 <g>
 	<g>
 		<path d="M29.701,27H15.123c-2.067,0-3.749,1.792-3.749,3.996c0,2.203,1.682,3.995,3.749,3.995h14.577

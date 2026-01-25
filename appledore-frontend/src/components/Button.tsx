@@ -17,8 +17,8 @@ const sizeStyles = {
 };
 
 const variantStyles = {
-  primary: "bg-gray-900 text-white hover:bg-gray-800 shadow-sm",
-  secondary: "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50",
+  primary: "bg-gray-900 text-white hover:bg-gray-800 shadow-sm dark:bg-slate-800 dark:hover:bg-slate-700",
+  secondary: "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 dark:bg-slate-800 dark:text-slate-100 dark:border-slate-600 dark:hover:bg-slate-700",
 };
 
 export const Button = ({

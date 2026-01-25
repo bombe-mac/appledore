@@ -69,7 +69,7 @@ export declare const userModel: import("mongoose").Model<{
     __v: number;
 }>;
 export declare const contentModel: import("mongoose").Model<{
-    type: "link" | "tweet" | "videos" | "document" | "blog";
+    type: "link" | "X" | "videos" | "document" | "blog";
     title: string;
     link: string;
     userId: Types.ObjectId;
@@ -77,7 +77,7 @@ export declare const contentModel: import("mongoose").Model<{
 }, {}, {}, {
     id: string;
 }, import("mongoose").Document<unknown, {}, {
-    type: "link" | "tweet" | "videos" | "document" | "blog";
+    type: "link" | "X" | "videos" | "document" | "blog";
     title: string;
     link: string;
     userId: Types.ObjectId;
@@ -85,7 +85,7 @@ export declare const contentModel: import("mongoose").Model<{
 }, {
     id: string;
 }, import("mongoose").DefaultSchemaOptions> & Omit<{
-    type: "link" | "tweet" | "videos" | "document" | "blog";
+    type: "link" | "X" | "videos" | "document" | "blog";
     title: string;
     link: string;
     userId: Types.ObjectId;
@@ -97,13 +97,13 @@ export declare const contentModel: import("mongoose").Model<{
 }, "id"> & {
     id: string;
 }, Schema<any, import("mongoose").Model<any, any, any, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, {
-    type: "link" | "tweet" | "videos" | "document" | "blog";
+    type: "link" | "X" | "videos" | "document" | "blog";
     title: string;
     link: string;
     userId: Types.ObjectId;
     tags: Types.ObjectId[];
 }, import("mongoose").Document<unknown, {}, {
-    type: "link" | "tweet" | "videos" | "document" | "blog";
+    type: "link" | "X" | "videos" | "document" | "blog";
     title: string;
     link: string;
     userId: Types.ObjectId;
@@ -111,7 +111,7 @@ export declare const contentModel: import("mongoose").Model<{
 }, {
     id: string;
 }, import("mongoose").ResolveSchemaOptions<import("mongoose").DefaultSchemaOptions>> & Omit<{
-    type: "link" | "tweet" | "videos" | "document" | "blog";
+    type: "link" | "X" | "videos" | "document" | "blog";
     title: string;
     link: string;
     userId: Types.ObjectId;
@@ -126,7 +126,7 @@ export declare const contentModel: import("mongoose").Model<{
     [path: string]: import("mongoose").SchemaDefinitionProperty<undefined, any, any>;
 } | {
     [x: string]: import("mongoose").SchemaDefinitionProperty<any, any, import("mongoose").Document<unknown, {}, {
-        type: "link" | "tweet" | "videos" | "document" | "blog";
+        type: "link" | "X" | "videos" | "document" | "blog";
         title: string;
         link: string;
         userId: Types.ObjectId;
@@ -134,7 +134,7 @@ export declare const contentModel: import("mongoose").Model<{
     }, {
         id: string;
     }, import("mongoose").ResolveSchemaOptions<import("mongoose").DefaultSchemaOptions>> & Omit<{
-        type: "link" | "tweet" | "videos" | "document" | "blog";
+        type: "link" | "X" | "videos" | "document" | "blog";
         title: string;
         link: string;
         userId: Types.ObjectId;
@@ -147,7 +147,7 @@ export declare const contentModel: import("mongoose").Model<{
         id: string;
     }> | undefined;
 }, {
-    type: "link" | "tweet" | "videos" | "document" | "blog";
+    type: "link" | "X" | "videos" | "document" | "blog";
     title: string;
     link: string;
     userId: Types.ObjectId;
@@ -157,7 +157,7 @@ export declare const contentModel: import("mongoose").Model<{
 } & {
     __v: number;
 }>, {
-    type: "link" | "tweet" | "videos" | "document" | "blog";
+    type: "link" | "X" | "videos" | "document" | "blog";
     title: string;
     link: string;
     userId: Types.ObjectId;
