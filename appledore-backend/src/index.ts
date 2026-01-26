@@ -204,6 +204,11 @@ app.get('/api/v1/share/:sharelink', async (req, res)=>{
     })
 })
 
+app.get("/health", (req, res) => {
+    res.status(200).send("OK");
+});
+
+
 async function main() {
     const MONGO_URI = config.MONGO_URI;
     const PORT = config.PORT;
