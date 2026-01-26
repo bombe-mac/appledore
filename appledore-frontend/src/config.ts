@@ -1,3 +1,3 @@
 export const config={
-    baseURL: "http://localhost:3000/api/v1"
+    baseURL: "https://appledore-backend.onrender.com/api/v1"
 }
