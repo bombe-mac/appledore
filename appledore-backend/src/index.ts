@@ -12,7 +12,7 @@ import cors from "cors";
 
 const app = express();
 
-const allowedOrigins = ['http://localhost:5173', 'https://appledore-backend.onrender.com'];
+const allowedOrigins = ['http://localhost:5173', 'https://appledore.jatinnayyar.dev/'];
 
 const options: cors.CorsOptions = {
     origin: allowedOrigins
