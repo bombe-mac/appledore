@@ -4,48 +4,33 @@ import { Card } from '../components/Card'
 import AddContentModal from '../components/AddContentModal'
 import { useEffect, useState } from 'react'
 import Sidebar from '../components/Sidebar'
-import axios from 'axios'
-import { config } from '../config'
 import { ThemeToggle } from '../components/ThemeToggle'
+import useCardsStore, { useFilteredCards } from '../stores/useCardStore'
 
 type ContentItem = {
   _id?: string
   type: 'videos' | 'X' | 'link' | 'blog' | 'document'
   title: string
   link: string
-  deleted?: boolean
-  setDeleted?: (deleted: boolean) => void
 }
 
 export const Dashboard = () => {
     const [modalState, setModal] = useState(false);
-    const [cardData, setCardData]=useState<ContentItem[]>([])
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+    //store
+    const cards = useFilteredCards();
+    const fetchData = useCardsStore((s)=>s.fetchCards)
+    const handleDelete = useCardsStore((s)=>s.deleteCard)
+
+    const [sidebarOpen, setSidebarOpen] = useState(false);
     const username=localStorage.getItem('username')||''
-    const fetchData = async ()=>{
-      try {
-        const token=localStorage.getItem('token')
-        const {data}=await axios.get(`${config.baseURL}/content`,
-          {
-            headers: {
-              token: token || '',
-            }
-          }
-        );
-          setCardData(data?.content)
-      } catch (error) {
-        console.error('Error fetching content:', error);
-      }
-    }
     
     useEffect(()=>{
     fetchData()
     }, [modalState])
 
-    const handleDelete=(cardId:string)=>{
-      setCardData((prevCards)=>prevCards.filter((card)=>card._id!==cardId))
-    }
+    
 
+    
   return (
     <div className='min-h-screen bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-100 overflow-x-hidden'>
       {sidebarOpen && (
@@ -89,7 +74,7 @@ export const Dashboard = () => {
         <div className='p-4 sm:p-6 lg:p-8'>
           <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6'>
             {
-  cardData.map((card) =>
+  cards.map((card) =>
     card._id ? (
       <Card
         key={card._id}

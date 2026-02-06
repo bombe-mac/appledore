@@ -10,9 +10,12 @@ import { userMiddleware } from "./middleware/userMiddleware.js";
 import { random } from "./utils.js";
 import cors from "cors";
 const app = express();
-const allowedOrigins = ['http://localhost:5173', 'http://localhost:5174'];
+const allowedOrigins = ['http://localhost:5173', 'https://appledore.jatinnayyar.dev'];
 const options = {
-    origin: allowedOrigins
+    origin: allowedOrigins,
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'token']
 };
 app.use(cors(options));
 app.use(express.json());
@@ -167,6 +170,9 @@ app.get('/api/v1/share/:sharelink', async (req, res) => {
         username: user.username,
         constent: content
     });
+});
+app.get("/health", (req, res) => {
+    res.status(200).send("OK");
 });
 async function main() {
     const MONGO_URI = config.MONGO_URI;

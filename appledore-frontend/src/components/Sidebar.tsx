@@ -7,14 +7,27 @@ import Shercap from "../icons/Shercap"
 import { X } from "../icons/X"
 import { Youtube } from "../icons/Youtube"
 import { SidebarItem } from "./SidebarItem"
+import { All } from "../icons/All"
+import useCardsStore, { type CardFilterType } from "../stores/useCardStore"
 
 type SidebarProps = {
   isOpen: boolean;
   onClose: () => void;
 };
 
+const sidebarItems: { icon: React.ReactNode; label: string; type: CardFilterType }[] = [
+  { icon: <All />, label: "All", type: "all" },
+  { icon: <X />, label: "X/Tweet", type: "X" },
+  { icon: <Youtube />, label: "YouTube", type: "videos" },
+  { icon: <Page />, label: "Document", type: "document" },
+  { icon: <Blog />, label: "Blog", type: "blog" },
+  { icon: <Links />, label: "Links", type: "link" },
+]
+
 const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const navigate = useNavigate();
+  const selectedType = useCardsStore((s) => s.selectedType)
+  const setSelectedType = useCardsStore((s) => s.setSelectedType)
 
   const logoutHandler = () => {
     localStorage.removeItem("token");
@@ -45,11 +58,15 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
 
       <nav className="flex-1 py-4 overflow-y-auto">
         <p className="px-5 text-xs font-semibold text-gray-400 dark:text-slate-500 uppercase tracking-wider mb-3">Content Types</p>
-        <SidebarItem icon={<X />} text="X/Tweet" />
-        <SidebarItem icon={<Youtube />} text="YouTube" />
-        <SidebarItem icon={<Page />} text="Document" />
-        <SidebarItem icon={<Blog />} text="Blog" />
-        <SidebarItem icon={<Links />} text="Links" />
+        {sidebarItems.map((item) => (
+          <SidebarItem
+            key={item.type}
+            icon={item.icon}
+            text={item.label}
+            isActive={selectedType === item.type}
+            onClick={() => setSelectedType(item.type)}
+          />
+        ))}
       </nav>
 
       <SidebarItem icon={<Logout />} text="Logout" onClick={logoutHandler} />
