@@ -1,4 +1,4 @@
-import type { ReactElement, MouseEventHandler, ReactNode } from "react"
+import type { MouseEventHandler, ReactNode } from "react"
 
 interface SidebarItemProps {
     text: string;

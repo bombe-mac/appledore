@@ -7,13 +7,6 @@ import Sidebar from '../components/Sidebar'
 import { ThemeToggle } from '../components/ThemeToggle'
 import useCardsStore, { useFilteredCards } from '../stores/useCardStore'
 
-type ContentItem = {
-  _id?: string
-  type: 'videos' | 'X' | 'link' | 'blog' | 'document'
-  title: string
-  link: string
-}
-
 export const Dashboard = () => {
     const [modalState, setModal] = useState(false);
     //store

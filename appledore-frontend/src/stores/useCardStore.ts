@@ -1,7 +1,6 @@
 import { create } from 'zustand'
 import axios from 'axios'
 import { config } from '../config'
-import { shallow } from 'zustand/shallow'
 import { useMemo } from 'react'
 export interface CardType {
     _id?: string
